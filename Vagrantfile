@@ -19,22 +19,22 @@ cassandra_tokens = []
 end
 
 
-$ruby_install = <<SCRIPT
-curl -L https://get.rvm.io | bash -s stable
-source /etc/profile.d/rvm.sh
-rvm install ruby-1.9.3
-rvm use ruby-1.9.3
-SCRIPT
+# $ruby_install = <<SCRIPT
+# curl -L https://get.rvm.io | bash -s stable
+# source /etc/profile.d/rvm.sh
+# rvm install ruby-1.9.3
+# rvm use ruby-1.9.3
+# SCRIPT
 
 
 Vagrant::Config.run do |config|
   servers.each do |server|
     config.vm.define server['name'] do |config2|
       config2.vm.box = "precise"
-      config2.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
+      config2.vm.box_url = "https://dl.dropbox.com/u/14292474/vagrantboxes/precise64-ruby-1.9.3-p194.box"
       config2.vm.host_name = server['name']
       config2.vm.network :hostonly, server['ip']
-      config2.vm.provision :shell, :inline => $ruby_install
+      # config2.vm.provision :shell, :inline => $ruby_install
       config2.vm.provision :shell, :inline => "gem install chef --version 11.4.2 --no-rdoc --no-ri --conservative"
       config2.vm.provision :chef_solo do |chef|
         chef.log_level = :debug
