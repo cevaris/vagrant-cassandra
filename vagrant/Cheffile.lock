@@ -10,12 +10,12 @@ SITE
       windows (>= 0.0.0)
     windows (1.11.0)
       chef_handler (>= 0.0.0)
-    yum (2.4.2)
+    yum (2.4.4)
 
 GIT
   remote: https://github.com/michaelklishin/cassandra-chef-cookbook
   ref: master
-  sha: ba66245023a2b5d059a934a4aa9f3f3a126c6036
+  sha: 667a24c0934876f0b2027d42cd699dfea73e3a24
   specs:
     cassandra (2.0.0)
       apt (>= 0.0.0)
